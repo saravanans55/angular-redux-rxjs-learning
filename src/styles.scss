@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@import './dark-theme.scss'; // default mode is light
+@media (prefers-color-scheme: dark) {
+  @import './dark-theme.scss';
+}
+
+body {
+    background-color: $background-color;
+    color: $text-color;
+  }

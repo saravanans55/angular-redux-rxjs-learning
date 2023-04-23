@@ -1,0 +1,63 @@
+<h1>Redux CRUD Example</h1>
+<h2>List of Students</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students$ | async">
+      <td>{{ student.id }}</td>
+      <td>{{ student.firstName }}{{ student.lastName }}</td>
+      <td>{{ student.email }}</td>
+      <td>{{ student.phoneNumber }}</td>
+      <td>{{ student.grade }}</td>
+      <td>
+        <button (click)="editStudent(student)">Edit</button>
+        <button (click)="deleteStudent(student.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="id">ID:</label>
+        <input type="text" id="id" formControlName="id" required>
+    </div>
+
+  <div>
+    <label for="name">firstName:</label>
+    <input type="text" id="firstName" formControlName="firstName" required>
+  </div>
+
+  <div>
+    <label for="name">Last name:</label>
+    <input type="text" id="lastName" formControlName="lastName" required>
+  </div>
+
+  <div>
+    <label for="email">email:</label>
+    <input type="text" id="email" formControlName="email" required>
+  </div>
+
+  <div>
+    <label for="phoneNumber">phoneNumber:</label>
+    <input type="text" id="phoneNumber" formControlName="phoneNumber" required>
+  </div>
+
+  <div>
+    <label for="grade">grade:</label>
+    <input type="text" id="grade" formControlName="grade" required>
+  </div>
+
+  <button type="submit">Save</button>
+  <button type="button" (click)="clearForm()">Clear</button>
+</form>
